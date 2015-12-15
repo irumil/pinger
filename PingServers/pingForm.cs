@@ -165,9 +165,10 @@ namespace PingServers
         {
             Width = 770;
             Height = 600;
+    
             serverDataGridView.Dock = DockStyle.Left;
             serverDataGridView.Anchor = (AnchorStyles.Right | AnchorStyles.Left | AnchorStyles.Bottom | AnchorStyles.Top);
-
+            
             mainSplitContainer.Panel2Collapsed = false;
             toolBarPanel.Visible = true;
         }
