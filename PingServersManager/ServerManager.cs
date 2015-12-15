@@ -88,9 +88,14 @@ namespace PingServersManager
 
         private void OnTimerPing(object source, System.Timers.ElapsedEventArgs e)
         {
-            foreach (var serverInfo in _serverListManager.Where(sI => sI.PingThisServer))
+            //разделяем промежуток для пинга
+            var countNeedPingServers = _serverListManager.Count(sI => sI.PingThisServer);
+            var timeOutForPing = _timerForPingServer.Interval / countNeedPingServers;
+
+            foreach (ServerInfo serverInfo in _serverListManager.Where(sI => sI.PingThisServer))
             {
                 serverInfo.Ping();
+                Thread.Sleep((int) timeOutForPing);
             }
         }
 
